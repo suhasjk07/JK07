@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Suhas J K — Portfolio & Digital Resume</title>
+  <meta name="description" content="Suhas J K — Technology Analyst | AI & Cybersecurity Enthusiast | Portfolio & Digital Resume" />
+
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#94a3b8; --accent1:#7c3aed; --accent2:#06b6d4; --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius: 14px; --ff: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:var(--ff); background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.07), transparent), radial-gradient(900px 500px at 90% 90%, rgba(6,182,212,0.04), transparent), var(--bg); color:#e6eef8; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      -webkit-user-select:none; user-select:none;
+    }
+
+    /* container */
+    .wrap{max-width:1100px; margin:30px auto; padding:28px}
+
+    /* header */
+    header{display:flex; gap:18px; align-items:center; justify-content:space-between}
+    .brand{display:flex; gap:14px; align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow: 0 6px 18px rgba(12,17,23,0.6);}
+    .logo svg{filter:drop-shadow(0 6px 18px rgba(124,58,237,0.16));}
+    .name{line-height:1}
+    .name h1{margin:0;font-size:18px}
+    .name p{margin:0;font-size:12px;color:var(--muted)}
+
+    /* nav */
+    nav{display:flex;gap:12px}
+    .btn{background:var(--glass); border:1px solid rgba(255,255,255,0.04); padding:10px 14px; border-radius:10px; font-size:13px; cursor:pointer}
+    .btn.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2)); color:#051028; font-weight:700; border:none}
+
+    /* hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:26px;align-items:center;margin-top:28px}
+    .intro{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:26px;border-radius:18px;backdrop-filter: blur(6px);box-shadow: 0 8px 30px rgba(2,6,23,0.6)}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(124,58,237,0.12), rgba(6,182,212,0.06));font-weight:700;color:var(--accent1);font-size:12px}
+    .headline{font-size:28px;margin:12px 0 8px}
+    .lead{color:var(--muted);margin-bottom:18px}
+
+    .badges{display:flex;gap:8px;flex-wrap:wrap}
+    .badge{padding:8px 10px;border-radius:10px;background:var(--glass);font-size:13px;color:var(--muted)}
+
+    /* resume card */
+    .resume{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.02)}
+    .score{font-weight:800;font-size:28px;color:var(--accent2)}
+    .meta{color:var(--muted);font-size:13px}
+
+    /* projects */
+    .section{margin-top:26px}
+    .section h2{margin:0 0 12px;font-size:18px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform .35s cubic-bezier(.2,.9,.2,1), box-shadow .35s}
+    .card:hover{transform:translateY(-8px) rotateX(2deg); box-shadow: 0 20px 40px rgba(2,6,23,0.6)}
+    .card h3{margin:0 0 6px}
+    .card p{color:var(--muted);font-size:13px;margin:0}
+    .tags{display:flex;gap:8px;margin-top:10px}
+    .t{padding:6px 8px;border-radius:8px;background:var(--glass);font-size:12px;color:var(--muted)}
+
+    /* skills */
+    .skills{display:flex;flex-direction:column;gap:10px}
+    .skill{display:flex;align-items:center;gap:10px}
+    .skill .bar{flex:1;height:10px;background:var(--glass);border-radius:999px;overflow:hidden}
+    .skill .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--accent1),var(--accent2));transform-origin:left;transition:width .8s cubic-bezier(.2,.9,.2,1)}
+
+    /* timeline */
+    .timeline{background:var(--card);padding:14px;border-radius:12px}
+    .tl-item{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+    .dot{width:12px;height:12px;border-radius:999px;background:linear-gradient(90deg,var(--accent1),var(--accent2));box-shadow:0 6px 12px rgba(0,0,0,0.6)}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* footer */
+    footer{display:flex;justify-content:space-between;align-items:center;margin-top:26px;color:var(--muted)}
+
+    /* responsive */
+    @media (max-width:980px){.hero{grid-template-columns:1fr;}.grid{grid-template-columns:1fr}}
+
+    /* subtle floating background */
+    .bg-blobs{position:fixed;inset:0;z-index:-1;pointer-events:none}
+    .blob{position:absolute;filter: blur(40px);opacity:0.12}
+    .b1{width:480px;height:480px;left:-120px;top:-80px;background:radial-gradient(circle at 30% 20%,var(--accent1),transparent)}
+    .b2{width:420px;height:420px;right:-80px;bottom:-80px;background:radial-gradient(circle at 70% 70%,var(--accent2),transparent)}
+
+    /* small animations */
+    .type{display:inline-block; border-right:2px solid rgba(255,255,255,0.12); padding-right:4px}
+    .float{animation: floaty 6s ease-in-out infinite}
+    @keyframes floaty{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+
+    /* modal */
+    .modal{position:fixed;inset:0;background:linear-gradient(0deg, rgba(2,6,23,0.6), rgba(2,6,23,0.6));display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+    .modal.open{opacity:1;pointer-events:auto}
+    .modal .box{width:760px;max-width:95%;background:linear-gradient(180deg,#071225, #0e1b2a);padding:20px;border-radius:12px}
+
+  </style>
+</head>
+<body>
+  <div class="bg-blobs" aria-hidden>
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12c0-4.97 4.03-9 9-9s9 4.03 9 9-4.03 9-9 9S3 16.97 3 12z" fill="white" opacity="0.08"/><path d="M8 14l4-8 4 8H8z" fill="white"/></svg>
+        </div>
+        <div class="name">
+          <h1>Suhas J K</h1>
+          <p>Technology Analyst · AI & Cybersecurity · Final-year AI & DS</p>
+        </div>
+      </div>
+
+      <nav>
+        <button class="btn" data-scroll="#projects">Projects</button>
+        <button class="btn" data-scroll="#skills">Skills</button>
+        <button class="btn" id="resumeBtn">Digital Resume</button>
+        <button class="btn primary" id="contactBtn">Contact</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="intro">
+          <span class="tag">Open to: Technology Analyst Roles</span>
+          <h2 class="headline">Hi, I'm <strong>Suhas</strong> — building practical AI & secure systems.</h2>
+          <p class="lead">Final-year B.E. student in Artificial Intelligence & Data Science. I solve real problems using Python, ML, Cybersecurity, and full-stack skills. I love clean code, automated workflows, and secure systems.</p>
+
+          <div class="badges">
+            <div class="badge">AI · ML · Data Science</div>
+            <div class="badge">Cybersecurity · Pentesting</div>
+            <div class="badge">Full-stack · Python · JS</div>
+          </div>
+
+          <div style="margin-top:18px;display:flex;gap:10px;align-items:center">
+            <button class="btn primary" id="viewProjects">View Projects</button>
+            <button class="btn" id="downloadResume">Download Resume</button>
+          </div>
+        </div>
+
+        <aside class="resume float">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="score">Technology Analyst</div>
+              <div class="meta">AI • Cybersecurity • Web Dev</div>
+            </div>
+            <div style="text-align:right">
+              <div class="meta">Location</div>
+              <div>Shimoga, Karnataka</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:10px">
+            <div style="flex:1">
+              <div class="meta">Experience</div>
+              <div>Intern — Data Science, Shritek Innovations</div>
+            </div>
+            <div style="width:96px;text-align:right">
+              <div class="meta">Education</div>
+              <div>Final-year B.E. (AI & DS)</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+            <div style="flex:1" class="meta">Top Skills</div>
+            <div class="meta">Contact</div>
+          </div>
+
+          <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+            <div style="flex:1" class="badges">
+              <div class="badge">Python</div>
+              <div class="badge">Machine Learning</div>
+            </div>
+            <div style="width:56px;text-align:right">
+              <button class="btn" id="emailBtn">Email</button>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="projects" class="section">
+        <h2>Highlighted Projects</h2>
+        <div class="grid" id="projectGrid">
+          <!-- JS will populate projects here -->
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <h2>Skills & Proficiency</h2>
+        <div class="skills">
+          <div class="skill"><div style="width:120px" class="meta">Python</div><div class="bar"><div class="fill" data-width="92%"></div></div></div>
+          <div class="skill"><div style="width:120px" class="meta">Machine Learning</div><div class="bar"><div class="fill" data-width="86%"></div></div></div>
+          <div class="skill"><div style="width:120px" class="meta">Cybersecurity</div><div class="bar"><div class="fill" data-width="78%"></div></div></div>
+          <div class="skill"><div style="width:120px" class="meta">JavaScript</div><div class="bar"><div class="fill" data-width="80%"></div></div></div>
+        </div>
+
+        <div style="margin-top:18px" class="timeline">
+          <h3 style="margin-top:0">Timeline</h3>
+          <div class="tl-item"><div class="dot"></div><div><strong>Data Science Intern</strong><div class="small">Shritek Innovations — Present</div></div></div>
+          <div class="tl-item"><div class="dot"></div><div><strong>State-level INSPIRE Award</strong><div class="small">INSPIRE AWARD MANAK — State Winner</div></div></div>
+          <div class="tl-item"><div class="dot"></div><div><strong>College Projects & Seminars</strong><div class="small">Multiple seminars & Web dev projects</div></div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Contact</h2>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <div style="flex:1;min-width:260px" class="card">
+            <h3>Get in touch</h3>
+            <p class="small">Prefer email? Click contact to open your mail client or use the form.</p>
+            <div style="margin-top:10px">
+              <input id="name" placeholder="Your name" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit" />
+              <input id="email" placeholder="Your email" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit;margin-top:8px" />
+              <textarea id="message" placeholder="Your message" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit;margin-top:8px"></textarea>
+              <button class="btn primary" id="sendMsg" style="margin-top:8px">Send Message</button>
+            </div>
+          </div>
+
+          <div style="width:320px;min-width:260px" class="card">
+            <h3>Quick contact</h3>
+            <p class="small">Email: <strong>suhas@example.com</strong></p>
+            <p class="small">Location: Shimoga, Karnataka</p>
+            <div style="display:flex;gap:8px;margin-top:10px">
+              <button class="btn">LinkedIn</button>
+              <button class="btn">GitHub</button>
+              <button class="btn">Portfolio (PDF)</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>Made with ⚡ by Suhas J K</div>
+      <div class="small">© <span id="year"></span> • Clean, accessible single-file portfolio</div>
+    </footer>
+  </div>
+
+  <!-- Modal for project details / resume -->
+  <div id="modal" class="modal" role="dialog" aria-hidden>
+    <div class="box" id="modalBox"></div>
+  </div>
+
+  <script>
+    // basic dynamic data (customize these)
+    const DATA = {
+      name: 'Suhas J K',
+      title: 'Technology Analyst',
+      location: 'Shimoga, Karnataka',
+      email: 'suhas@example.com',
+      projects: [
+        {id:1,title:'OCR Invoice Extractor',desc:'High-accuracy invoice and PDF OCR tool with preprocessing and NER for fields extraction.',tags:['Python','OCR','NLP','Prod']},
+        {id:2,title:'Eye Training App',desc:'A web + mobile app with vision exercises, gamified progress tracking and analytics.',tags:['React','ML','Frontend']},
+        {id:3,title:'Secure Lab Automation',desc:'Automated secure lab setup for pentesting and training on cloud and local VMs.',tags:['Cybersecurity','Automation']},
+        {id:4,title:'Portfolio Website',desc:'This single-file dynamic portfolio with digital resume and print-ready resume.',tags:['HTML','CSS','JS']}
+      ]
+    }
+
+    // populate projects
+    const grid = document.getElementById('projectGrid');
+    DATA.projects.forEach(p=>{
+      const el = document.createElement('div'); el.className='card';
+      el.innerHTML = `<h3>${escapeHtml(p.title)}</h3><p>${escapeHtml(p.desc)}</p><div class="tags">${p.tags.map(t=>`<span class="t">${t}</span>`).join('')}</div><div style="margin-top:10px;text-align:right"><button class="btn" data-id="${p.id}">Details</button></div>`;
+      grid.appendChild(el);
+    })
+
+    // helpers
+    function escapeHtml(s){return (s+'').replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[c]);}
+
+    // animate skill fills
+    window.addEventListener('load',()=>{
+      document.querySelectorAll('.fill').forEach(f=>{ setTimeout(()=> f.style.width = f.getAttribute('data-width'), 200) })
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })
+
+    // scroll helpers
+    document.querySelectorAll('[data-scroll]').forEach(btn=>btn.addEventListener('click',e=>{
+      const s = document.querySelector(btn.getAttribute('data-scroll'));
+      if(s) s.scrollIntoView({behavior:'smooth',block:'start'});
+    }))
+
+    document.getElementById('viewProjects').addEventListener('click',()=>document.querySelector('#projects').scrollIntoView({behavior:'smooth'}))
+
+    // modal details
+    document.body.addEventListener('click', e=>{
+      if(e.target.matches('.card .btn') || e.target.matches('[data-id]')){
+        const id = e.target.getAttribute('data-id');
+        const p = DATA.projects.find(x=>x.id==id);
+        if(p) openModal(`<h2>${p.title}</h2><p>${p.desc}</p><p class="small">Tags: ${p.tags.join(', ')}</p><div style=\"margin-top:12px;text-align:right\"><button class='btn' id='liveBtn'>Open Demo</button> <button class='btn' id='closeModal'>Close</button></div>`);
+      }
+      if(e.target.id==='closeModal' || e.target.id==='modal') closeModal();
+    })
+
+    function openModal(html){const m=document.getElementById('modal'); document.getElementById('modalBox').innerHTML=html; m.classList.add('open'); m.setAttribute('aria-hidden','false') }
+    function closeModal(){const m=document.getElementById('modal'); m.classList.remove('open'); m.setAttribute('aria-hidden','true') }
+
+    // contact actions
+    document.getElementById('emailBtn').addEventListener('click',()=>{
+      window.location.href = `mailto:${DATA.email}?subject=Opportunities%20for%20${encodeURIComponent(DATA.name)}`;
+    })
+
+    document.getElementById('contactBtn').addEventListener('click',()=>{
+      window.location.href = `mailto:${DATA.email}?subject=Hello%20Suhas`;
+    })
+
+    document.getElementById('sendMsg').addEventListener('click',()=>{
+      const name = document.getElementById('name').value || 'Someone';
+      const email = document.getElementById('email').value || '';
+      const msg = document.getElementById('message').value || '';
+      const body = `Name: ${name}%0AEmail: ${email}%0A%0A${encodeURIComponent(msg)}`;
+      window.location.href = `mailto:${DATA.email}?subject=Portfolio%20Contact%20from%20${encodeURIComponent(name)}&body=${body}`;
+    })
+
+    // resume modal + printable resume
+    document.getElementById('resumeBtn').addEventListener('click',generateResume)
+    document.getElementById('downloadResume').addEventListener('click',generateResume)
+
+    function generateResume(){
+      // minimal printable resume built on the fly
+      const resumeHtml = `<!doctype html><html><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>${DATA.name} - Resume</title><style>body{font-family:Arial,Helvetica,sans-serif;color:#071027;padding:28px}h1{margin:0}h2{margin:6px 0 0}p{margin:6px 0}</style></head><body><h1>${DATA.name}</h1><p>${DATA.title} • ${DATA.location}</p><h2>Summary</h2><p>Final-year B.E. (AI & DS). Technology Analyst skilled in Python, ML, cybersecurity and web development. Intern experience at Shritek Innovations.</p><h2>Projects</h2>${DATA.projects.map(p=>`<h3>${p.title}</h3><p>${p.desc}</p>`).join('')}<h2>Education</h2><p>B.E. — AI & Data Science — VTU</p><h2>Contact</h2><p>Email: ${DATA.email}</p></body></html>`;
+      const w = window.open('','_blank');
+      w.document.write(resumeHtml); w.document.close();
+      // allow user to print/save as PDF
+    }
+
+    // small UX: keyboard Esc to close modal
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal() })
+
+    // intersection reveal
+    const obs = new IntersectionObserver((entries)=>{ entries.forEach(ent=>{ if(ent.isIntersecting) ent.target.style.transform='translateY(0)'; }) },{threshold:0.08});
+    document.querySelectorAll('.card').forEach(c=>{ c.style.transform='translateY(12px)'; c.style.transition='transform .6s cubic-bezier(.2,.9,.2,1)'; obs.observe(c); });
+
+    // tiny accessibility improvements
+    document.querySelectorAll('.btn').forEach(b=>{ b.addEventListener('keydown',e=>{ if(e.key==='Enter') b.click() }) })
+
+  </script>
+</body>
+</html>
