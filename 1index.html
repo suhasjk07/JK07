@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CYBER NEXUS — Elite Network Security Specialist</title>
+  <meta name="description" content="CYBER NEXUS — Elite Network Security Specialist & Technology Consultant. Portfolio, consulting, blog, booking calendar and hidden admin panel." />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:hsl(220,20%,8%);
+      --cyber:#1e90ff; --purple:#7a4cff; --pink:#ff58b0; --green:#32d583;
+      --glass: rgba(255,255,255,0.03);
+      --muted: rgba(230,238,248,0.6);
+      --card: rgba(255,255,255,0.02);
+      --radius:14px; --ff: 'Exo 2', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:radial-gradient(800px 400px at 10% 10%, rgba(122,76,204,0.06), transparent), radial-gradient(600px 300px at 90% 90%, rgba(50,213,131,0.03), transparent), var(--bg);font-family:var(--ff);color:#e6eef8}
+    a{color:inherit}
+    .container{max-width:1200px;margin:28px auto;padding:20px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--purple),var(--cyber));display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+    .logo span{font-weight:800;letter-spacing:1px}
+    .title h1{margin:0;font-size:20px}
+    .title p{margin:0;color:var(--muted);font-size:13px}
+
+    nav{display:flex;gap:8px}
+    .nav-btn{padding:8px 12px;border-radius:10px;background:var(--card);border:1px solid rgba(255,255,255,0.03);cursor:pointer}
+    .primary{background:linear-gradient(90deg,var(--purple),var(--cyber));color:#041024;font-weight:700;border:none}
+
+    /* bionic eye */
+    .eye{position:fixed;right:18px;top:18px;width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:60}
+    .eye .ring{width:100%;height:100%;border-radius:999px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,0.6);border:2px solid rgba(255,255,255,0.04);background:conic-gradient(from 0deg,var(--purple),var(--pink),var(--cyber),var(--green));padding:4px;animation:spin 4s linear infinite}
+    .eye .core{width:36px;height:36px;border-radius:999px;background:linear-gradient(180deg,#071022,#0f1728);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.04)}
+    @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+
+    /* hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:24px;align-items:center;margin-top:20px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:28px;border-radius:18px;backdrop-filter:blur(6px);box-shadow:0 8px 40px rgba(2,6,23,0.6)}
+    .big{font-size:42px;letter-spacing:2px;margin:6px 0}
+    .tagline{color:var(--muted);margin:8px 0 18px}
+    .badges{display:flex;gap:10px;flex-wrap:wrap}
+    .badge{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(122,76,204,0.08), rgba(30,144,255,0.06));font-weight:700;color:var(--purple)}
+
+    .hero-cta{display:flex;gap:12px;margin-top:16px}
+
+    /* matrix canvas */
+    #matrix{position:fixed;inset:0;z-index:-1;opacity:0.06}
+
+    /* expertise grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+    .card{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transition:transform .28s,box-shadow .28s;cursor:pointer}
+    .card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(2,6,23,0.6)}
+    .icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,var(--purple),var(--cyber));font-weight:800}
+
+    /* projects */
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
+    .proj{display:flex;gap:12px;align-items:flex-start}
+    .proj img{width:160px;height:100px;border-radius:8px;object-fit:cover;flex-shrink:0;background:linear-gradient(135deg,var(--purple),var(--cyber))}
+    .meta{color:var(--muted);font-size:13px}
+    .status{padding:6px 8px;border-radius:8px;font-weight:700}
+    .live{background:linear-gradient(90deg, rgba(50,213,131,0.12), rgba(30,144,255,0.04));color:var(--green)}
+    .dev{background:linear-gradient(90deg, rgba(255,88,176,0.06), rgba(122,76,204,0.04));color:var(--pink)}
+
+    /* consulting */
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+    .service{padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.03)}
+    .currency{padding:8px;border-radius:8px;background:var(--card);display:inline-block}
+
+    /* calendar modal */
+    .modal{position:fixed;inset:0;background:linear-gradient(0deg, rgba(2,6,23,0.6), rgba(2,6,23,0.6));display:flex;align-items:center;justify-content:center;z-index:80;opacity:0;pointer-events:none;transition:opacity .18s}
+    .modal.open{opacity:1;pointer-events:auto}
+    .modal .box{width:900px;max-width:96%;background:#071225;padding:18px;border-radius:12px}
+
+    /* chat */
+    .chat{position:fixed;right:18px;bottom:18px;width:360px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:12px;padding:10px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 40px rgba(0,0,0,0.6);z-index:70}
+    .chat-header{display:flex;align-items:center;gap:10px}
+    .bot{width:40px;height:40px;border-radius:10px;background:linear-gradient(90deg,var(--purple),var(--cyber));display:flex;align-items:center;justify-content:center}
+    .msgs{max-height:300px;overflow:auto;margin-top:10px;display:flex;flex-direction:column;gap:8px}
+    .msg{padding:8px 10px;border-radius:10px;max-width:80%;font-size:14px}
+    .from-bot{background:linear-gradient(90deg, rgba(122,76,204,0.06), rgba(30,144,255,0.04));align-self:flex-start}
+    .from-user{background:linear-gradient(90deg, rgba(255,255,255,0.03), transparent);align-self:flex-end}
+
+    /* blog */
+    .blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
+    .article{padding:14px;border-radius:12px;background:var(--card);border:1px solid rgba(255,255,255,0.03)}
+
+    footer{margin-top:24px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px}
+
+    @media (max-width:980px){.hero{grid-template-columns:1fr;}.grid{grid-template-columns:1fr 1fr}.projects{grid-template-columns:1fr}.services{grid-template-columns:1fr}.blog-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <canvas id="matrix"></canvas>
+  <div class="eye" id="bionicEye" title="Admin Access">
+    <div class="ring"><div class="core">👁️</div></div>
+  </div>
+
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo"><span>CN</span></div>
+        <div class="title"><h1>CYBER NEXUS</h1><p>Elite Network Security Specialist & Technology Consultant</p></div>
+      </div>
+      <nav>
+        <button class="nav-btn" data-scroll="#expertise">Expertise</button>
+        <button class="nav-btn" data-scroll="#projects">Projects</button>
+        <button class="nav-btn" data-scroll="#consult">Consulting</button>
+        <button class="nav-btn" data-scroll="#blog">Knowledge Hub</button>
+        <button class="nav-btn primary" id="bookNow">Book Consultation</button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card">
+          <div class="eyebrow"><strong class="badge">🛡️ Cybersecurity • 🌐 Network • ⚡ AI</strong></div>
+          <h2 class="big">CYBER NEXUS</h2>
+          <p class="tagline">Elite Network Security Specialist · Penetration Testing · AI-driven threat detection · Career & consulting</p>
+          <div class="badges">
+            <div class="badge">Security Audit</div>
+            <div class="badge">Penetration Testing</div>
+            <div class="badge">AI Security</div>
+          </div>
+          <div class="hero-cta">
+            <button class="nav-btn primary" data-scroll="#projects">Explore Portfolio</button>
+            <button class="nav-btn" id="bookCTA">Book Consultation</button>
+          </div>
+          <div style="margin-top:16px;color:var(--muted)">Scroll <span style="display:inline-block;transform:translateY(0);animation:bounce 2s infinite">⬇️</span></div>
+        </div>
+
+        <aside class="hero-card">
+          <h3 style="margin:0">Quick Profile</h3>
+          <p class="meta">Technology Consultant • Network Security • AI Integration</p>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-direction:column">
+            <div><strong>Location:</strong> Available Globally</div>
+            <div><strong>Email:</strong> contact@cybernexus.example</div>
+            <div><strong>Consulting:</strong> Security audits, architecture reviews, incident response</div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- Expertise Matrix -->
+      <section id="expertise" style="margin-top:18px">
+        <h2>Expertise Matrix</h2>
+        <div class="grid" id="expertGrid">
+          <div class="card" data-key="network"><div style="display:flex;gap:12px"><div class="icon">🛡️</div><div><strong>Network Security</strong><div class="meta">Designing secure network architectures & segmentation.</div></div></div></div>
+          <div class="card" data-key="pentest"><div style="display:flex;gap:12px"><div class="icon">🐞</div><div><strong>Penetration Testing</strong><div class="meta">Manual & automated pentests with reporting & remediation.</div></div></div></div>
+          <div class="card" data-key="cloud"><div style="display:flex;gap:12px"><div class="icon">☁️</div><div><strong>Cloud Security</strong><div class="meta">Secure cloud architecture, IAM, and hardening.</div></div></div></div>
+          <div class="card" data-key="zerotrust"><div style="display:flex;gap:12px"><div class="icon">🔒</div><div><strong>Zero Trust</strong><div class="meta">Zero Trust frameworks & micro-segmentation guidance.</div></div></div></div>
+          <div class="card" data-key="ai"><div style="display:flex;gap:12px"><div class="icon">🧠</div><div><strong>AI Consulting</strong><div class="meta">AI threat detection, MLOps & secure model deployment.</div></div></div></div>
+          <div class="card" data-key="career"><div style="display:flex;gap:12px"><div class="icon">🎓</div><div><strong>Career Counseling</strong><div class="meta">Roadmaps to transition into security & networking roles.</div></div></div></div>
+        </div>
+
+        <div id="expertDetail" class="hero-card" style="margin-top:12px;display:none"></div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" style="margin-top:18px">
+        <h2>Project Showcase</h2>
+        <div class="projects" id="projectList">
+          <!-- Projects populated by JS -->
+        </div>
+        <div style="margin-top:12px;text-align:right"><button class="nav-btn">View All Projects on GitHub</button></div>
+      </section>
+
+      <!-- Consulting -->
+      <section id="consult" style="margin-top:18px">
+        <h2>Consulting Services</h2>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+          <div><label class="currency">Currency: <select id="currencySel"><option>USD</option><option>INR</option><option>EUR</option><option>GBP</option><option>JPY</option></select></label></div>
+          <div><button class="nav-btn primary" id="bookTop">Book a Personal Consultation</button></div>
+        </div>
+
+        <div class="services" id="services">
+          <!-- service cards populated by JS -->
+        </div>
+      </section>
+
+      <!-- Booking Calendar Modal -->
+      <div id="bookingModal" class="modal" aria-hidden>
+        <div class="box">
+          <div style="display:flex;gap:12px;align-items:center;justify-content:space-between"><h3>Book Consultation</h3><div><button class="nav-btn" id="closeBooking">Close</button></div></div>
+          <div style="display:flex;gap:12px;margin-top:10px;flex-wrap:wrap">
+            <div style="flex:1;min-width:260px">
+              <label>Select Topic</label>
+              <select id="bookTopic" style="width:100%;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.03)">
+                <option>Security Audit & Penetration Testing</option>
+                <option>Network Architecture Design</option>
+                <option>AI/ML Strategy & Implementation</option>
+                <option>Technology Career Counseling</option>
+                <option>Incident Response Planning</option>
+              </select>
+
+              <div style="margin-top:10px"><label>Timezone</label>
+                <select id="tzSel" style="width:100%;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.03)"></select>
+              </div>
+
+              <div style="margin-top:10px"><label>Select Date</label>
+                <input id="bookDate" type="date" style="width:100%;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.03)" />
+                <div class="meta" style="margin-top:6px">Weekdays only — weekends are disabled</div>
+              </div>
+
+              <div style="margin-top:10px"><label>Available Time Slots</label>
+                <div id="slots" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px"></div>
+              </div>
+            </div>
+
+            <div style="width:320px;min-width:260px">
+              <h4>Contact Details</h4>
+              <input id="bkName" placeholder="Name*" style="width:100%;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.03)" />
+              <input id="bkEmail" placeholder="Email*" style="width:100%;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.03);margin-top:8px" />
+              <input id="bkPhone" placeholder="Phone" style="width:100%;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.03);margin-top:8px" />
+              <textarea id="bkMsg" placeholder="Message" style="width:100%;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.03);margin-top:8px"></textarea>
+              <div style="margin-top:10px;text-align:right"><button class="nav-btn primary" id="confirmBooking">Confirm Booking</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Knowledge Hub -->
+      <section id="blog" style="margin-top:18px">
+        <h2>Knowledge Hub</h2>
+        <div class="blog-grid" id="articles"></div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>
+        <strong>CYBER NEXUS</strong><div class="meta">Mission: Strengthen digital defenses and grow technical careers.</div>
+      </div>
+      <div style="text-align:right"><div class="meta">Email: contact@cybernexus.example</div><div>© <span id="yr"></span> • Built with secure-first design</div></div>
+    </footer>
+  </div>
+
+  <!-- Chat assistant -->
+  <div class="chat" id="chatBox" aria-hidden="false">
+    <div class="chat-header"><div class="bot">🤖</div><div><strong>Bionic AI</strong><div class="meta">Online</div></div></div>
+    <div class="msgs" id="chatMsgs">
+      <div class="msg from-bot">Hi — ask me quick questions or book a consultation for deeper help.</div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:8px"><input id="chatInput" placeholder="Ask a question..." style="flex:1;padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.03)" /><button class="nav-btn" id="sendChat">Send</button></div>
+    <div style="display:flex;gap:6px;margin-top:8px">
+      <button class="nav-btn" data-quick="What cybersecurity certifications should I pursue?">Certifications</button>
+      <button class="nav-btn" data-quick="How do I transition into network security?">Transition</button>
+      <button class="nav-btn" data-quick="What are the latest AI security trends?">AI Trends</button>
+    </div>
+  </div>
+
+  <script>
+    // small helpers and data
+    const state = {
+      secretCode: 'cyber2024',
+      projects: [
+        {id:1,title:'Enterprise Security Platform',desc:'End-to-end platform for vulnerability management, asset inventory, and automated reporting.',tech:['Python','Django','Postgres'],status:'live',stars:124,views:4300},
+        {id:2,title:'AI Threat Detector',desc:'ML pipeline for anomaly detection in network traffic using LSTM and feature engineering.',tech:['Python','TensorFlow','Kafka'],status:'dev',stars:89,views:2110},
+        {id:3,title:'Zero Trust Deployment',desc:'Reference architecture and terraform templates for micro-segmentation on cloud.',tech:['Terraform','AWS'],status:'completed',stars:56,views:980},
+        {id:4,title:'Pentest Automation Suite',desc:'Framework to orchestrate scanners, parsers and report generators for pentest workflows.',tech:['Go','Docker'],status:'live',stars:230,views:7200}
+      ],
+      services: [
+        {id:'s1',title:'Security Audit & Pen testing',dur:'2 hours',priceUSD:250},
+        {id:'s2',title:'Network Architecture Review',dur:'1 hour',priceUSD:150},
+        {id:'s3',title:'AI/ML Strategy',dur:'1 hour',priceUSD:180},
+        {id:'s4',title:'Career Counseling',dur:'30 min',priceUSD:60},
+        {id:'s5',title:'Incident Response Planning',dur:'1 hour',priceUSD:200}
+      ],
+      currencies: {USD:1,INR:83.5,EUR:0.92,GBP:0.79,JPY:157}
+    }
+
+    // year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // matrix background
+    (function matrix(){const c=document.getElementById('matrix');const ctx=c.getContext('2d');let w=window.innerWidth,h=window.innerHeight;let cols= Math.floor(w/20);let ypos=[];function resize(){w=innerWidth;h=innerHeight;c.width=w;c.height=h;cols=Math.floor(w/20);ypos=[];for(let i=0;i<cols;i++)ypos[i]=Math.random()*h}resize();window.addEventListener('resize',resize);const chars='アァカサタナハマヤャラワガザダバパイィキシチニヒミリギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレゲゼデベペオォコソトノホモヨョロゴゾドボポ0123456789';function draw(){ctx.fillStyle= 'rgba(7,10,18,0.06)';ctx.fillRect(0,0,w,h);ctx.fillStyle='#0ff';ctx.font='12px monospace';for(let i=0;i<cols;i++){let txt=chars.charAt(Math.floor(Math.random()*chars.length));ctx.fillText(txt,i*20,ypos[i]);ypos[i]+=12;if(ypos[i]>h+ Math.random()*100) ypos[i]=0}}setInterval(draw,60)})()
+
+    // populate projects
+    const projectList = document.getElementById('projectList');
+    state.projects.forEach(p=>{
+      const div = document.createElement('div');div.className='proj';
+      const img = document.createElement('div');img.innerHTML='';img.className='img';
+      const content = document.createElement('div');content.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:start"><h3 style=\"margin:0\">${p.title}</h3><div class=\"status ${p.status==='live'? 'live': p.status==='dev'? 'dev':'\'\'\'}\">${p.status.toUpperCase()}</div></div><p class=\"meta\">${p.desc}</p><div style=\"margin-top:8px;display:flex;gap:8px;align-items:center\">${p.tech.map(t=>`<span class=\"badge\">${t}</span>`).join(' ')}<div style=\"margin-left:auto;color:var(--muted);font-size:13px\">⭐ ${p.stars} • ${p.views} views</div></div><div style=\"margin-top:8px;text-align:right\"><button class=\"nav-btn\" onclick=\"openDemo(${p.id})\">Live Demo</button> <button class=\"nav-btn\">GitHub</button></div>`;
+      const pic = document.createElement('div');pic.style.width='160px';pic.style.height='100px';pic.style.borderRadius='8px';pic.style.background='linear-gradient(135deg,#7a4cff,#1e90ff)';
+      div.appendChild(pic);div.appendChild(content);projectList.appendChild(div);
+    })
+
+    window.openDemo = function(id){const p = state.projects.find(x=>x.id===id);alert('Open demo: '+p.title)}
+
+    // expertise selection
+    document.getElementById('expertGrid').addEventListener('click',e=>{
+      const card = e.target.closest('.card'); if(!card) return; const key = card.getAttribute('data-key'); const detail = document.getElementById('expertDetail');
+      const map = {
+        network: {title:'Network Security',content:'Design & implement network-level defenses including firewalls, IDS/IPS, VLAN segmentation, secure routing patterns, and monitoring. Best practices include least-privilege ACLs, strict management plane protections, and regular configuration audits.'},
+        pentest: {title:'Penetration Testing',content:'Conduct scoping, reconnaissance, vulnerability discovery, exploitation, post-exploitation analysis, and comprehensive reporting with prioritized remediation. Use a mix of automated scanners and manual techniques.'},
+        cloud: {title:'Cloud Security',content:'Harden cloud accounts, configure IAM least-privilege, secure workloads, encryption at rest/in transit, and IaC scanning. Provide runbooks for incident response in cloud environments.'},
+        zerotrust: {title:'Zero Trust',content:'Adopt identity-centric security, micro-segmentation, continuous authorization, and least-privilege access to reduce lateral movement.'},
+        ai: {title:'AI Consulting',content:'Secure ML pipelines by protecting data provenance, performing adversarial testing, model explainability, and safe deployment practices.'},
+        career: {title:'Career Counseling',content:'Tailored roadmaps, certification guidance (e.g., OSCP, CEH, CCNA/CCNP), interview prep, and portfolio improvements.'}
+      };
+      const obj = map[key] || {title:'Expertise',content:'Details coming soon.'}; detail.innerHTML = `<h3>${obj.title}</h3><p class=\"meta\">${obj.content}</p>`; detail.style.display='block'; detail.scrollIntoView({behavior:'smooth'});
+    })
+
+    // services
+    const servicesDiv = document.getElementById('services');
+    function renderServices(currency='USD'){
+      servicesDiv.innerHTML=''; const rate = state.currencies[currency] || 1; state.services.forEach(s=>{
+        const card = document.createElement('div');card.className='service';
+        const price = (s.priceUSD * rate);
+        card.innerHTML = `<h4 style=\"margin:0\">${s.title}</h4><div class=\"meta\">Duration: ${s.dur}</div><div style=\"margin-top:8px;font-weight:800;font-size:18px\">${currency} ${price.toFixed(2)}</div><p class=\"meta\" style=\"margin-top:8px\">Includes detailed assessment, report & follow-up recommendations.</p><div style=\"margin-top:10px;text-align:right\"><button class=\"nav-btn\" data-service=\"${s.id}\">Book Session</button></div>`;
+        servicesDiv.appendChild(card);
+      })
+    }
+    renderServices('USD');
+    document.getElementById('currencySel').addEventListener('change',e=>renderServices(e.target.value));
+
+    // booking modal logic
+    const bookingModal = document.getElementById('bookingModal');
+    function openBooking(){bookingModal.classList.add('open');bookingModal.setAttribute('aria-hidden','false')}
+    function closeBooking(){bookingModal.classList.remove('open');bookingModal.setAttribute('aria-hidden','true')}
+    document.getElementById('bookNow').addEventListener('click',openBooking);
+    document.getElementById('bookTop').addEventListener('click',openBooking);
+    document.getElementById('bookCTA').addEventListener('click',openBooking);
+    document.getElementById('bookTop')?.addEventListener('click',openBooking);
+    document.getElementById('closeBooking').addEventListener('click',closeBooking);
+
+    // populate timezone selector
+    const tzs = ['UTC','IST','EST','PST','CET','JST','AEST','GMT'];
+    const tzSel = document.getElementById('tzSel'); tzs.forEach(t=>{const o=document.createElement('option');o.textContent=t;tzSel.appendChild(o)});
+
+    // disable weekends in date input
+    const bookDate = document.getElementById('bookDate');
+    bookDate.addEventListener('change',()=>{
+      const d = new Date(bookDate.value); const day = d.getDay(); if(day===0||day===6){alert('Weekends are not available. Please choose a weekday.');bookDate.value=''; renderSlots([]);return;} renderSlots(generateSlots())
+    })
+
+    function generateSlots(){ // 9 to 17
+      const slots = []; for(let h=9; h<=16; h++){slots.push({label:`${h}:00 - ${h+1}:00`,value:`${h}:00`})} return slots
+    }
+    function renderSlots(slots){ const slotsDiv = document.getElementById('slots'); slotsDiv.innerHTML=''; slots.forEach(s=>{const b=document.createElement('button');b.className='nav-btn';b.textContent=s.label; b.addEventListener('click',()=>{document.querySelectorAll('#slots .nav-btn').forEach(x=>x.classList.remove('primary')); b.classList.add('primary'); b.dataset.selected = s.value}) ;slotsDiv.appendChild(b)}) }
+
+    document.getElementById('confirmBooking').addEventListener('click',()=>{
+      const name = document.getElementById('bkName').value.trim(); const email = document.getElementById('bkEmail').value.trim(); if(!name||!email){alert('Please provide name and email');return;} const date = document.getElementById('bookDate').value; if(!date){alert('Select a date');return;} const selected = document.querySelector('#slots .nav-btn.primary'); if(!selected){alert('Select a time slot');return;} const topic = document.getElementById('bookTopic').value; closeBooking(); toast('Booking confirmed — check your email for details'); console.log('Booking', {name,email,date,slot:selected.dataset.selected,topic})
+    })
+
+    // toast
+    function toast(msg){const d=document.createElement('div');d.textContent=msg;d.style.position='fixed';d.style.bottom='24px';d.style.left='50%';d.style.transform='translateX(-50%)';d.style.padding='10px 14px';d.style.background='#081026';d.style.border='1px solid rgba(255,255,255,0.04)';d.style.borderRadius='8px';d.style.zIndex=120;document.body.appendChild(d);setTimeout(()=>d.remove(),4200)}
+
+    // bionic eye admin
+    document.getElementById('bionicEye').addEventListener('click',()=>{
+      const code = prompt('Enter secret code to access admin panel:'); if(code===state.secretCode){openAdminPanel()} else if(code) alert('Incorrect code')
+    })
+    function openAdminPanel(){const w = window.open('','_blank'); w.document.write('<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CYBER NEXUS — Admin</title><style>body{font-family:Arial;padding:18px;background:#071022;color:#e6eef8}h1{margin-top:0}.card{background:#091726;padding:12px;border-radius:8px;margin-top:10px}</style></head><body><h1>Admin Panel (Demo)</h1><div class="card"><strong>Visitor Stats (Simulated)</strong><div>Total visitors: 12,342</div><div>Active: 7</div></div><div class="card"><strong>Quick Actions</strong><div><button onclick="alert(\'Upload Resume - demo\')">Upload Resume</button> <button onclick="alert(\'Add Project - demo\')">Add Project</button></div></div><div class="card"><strong>Payment Links</strong><div>Razorpay: placeholder</div></div><p style="margin-top:18px">This admin panel is a demo shell. Integrate backend (Supabase/Firebase) for full functionality.</p></body></html>'); w.document.close();}
+
+    // chat assistant quick replies
+    document.getElementById('chatBox').addEventListener('click',e=>{if(e.target.matches('[data-quick]')){handleQuestion(e.target.getAttribute('data-quick'))}})
+    document.getElementById('sendChat').addEventListener('click',()=>{const q=document.getElementById('chatInput').value.trim(); if(q) handleQuestion(q)})
+    function handleQuestion(q){const msgs = document.getElementById('chatMsgs'); const user = document.createElement('div');user.className='msg from-user';user.textContent=q; msgs.appendChild(user); msgs.scrollTop = msgs.scrollHeight; const bot = document.createElement('div');bot.className='msg from-bot'; bot.textContent='Typing...'; msgs.appendChild(bot); setTimeout(()=>{bot.textContent = cannedResponse(q); msgs.scrollTop = msgs.scrollHeight},800)}
+    function cannedResponse(q){q=q.toLowerCase(); if(q.includes('cert')) return 'Recommended: OSCP for hands-on offensive skills, CompTIA Security+ for basics, CISSP for managerial roles. Prioritize practical labs and capture-the-flag practice.'; if(q.includes('transition')) return 'Map skills: networking, linux, scripting, basic pentesting tools. Build a portfolio with small pentest reports and open-source contributions.'; if(q.includes('ai')) return 'AI security trends: adversarial ML, model theft, data poisoning. Focus on secure MLOps, explainability, and monitoring model drift.'; if(q.includes('interview')) return 'Practice scenario-based questions, live pentest demos, and system design for secure architectures. Prepare concise stories of past security improvements.'; return 'That is a great question — for deep help, consider booking a consultation. I can provide pointers and a proposed learning path.' }
+
+    // quick scroll
+    document.querySelectorAll('[data-scroll]').forEach(b=>b.addEventListener('click',()=>{const sel=b.getAttribute('data-scroll'); if(sel){document.querySelector(sel).scrollIntoView({behavior:'smooth'})}}))
+
+    // populate articles (partial content, expand inline)
+    const articles = [
+      {id:'a1',title:'Zero Trust Architecture: Modern Security Framework',date:'2024-07-05',read:8,cat:'Architecture',content:`Zero Trust shifts the security perimeter from network location to identity and context. Instead of assuming trust based on location, every request is evaluated using identity, device posture, and contextual signals. Implementing Zero Trust involves strong identity and access management, multi-factor authentication, micro-segmentation, continuous monitoring, and least-privilege access. Start with critical assets, map data flows, and apply granular policies. Practical steps include integrating single sign-on, using identity providers, implementing just-in-time access, and using network segmentation technologies like software-defined perimeters. Continuous validation and telemetry make it possible to detect deviations and respond quickly.`},
+      {id:'a2',title:'Network Segmentation Best Practices',date:'2024-06-20',read:6,cat:'Network',content:'Segmentation reduces blast radius by separating critical assets. Use VLANs, firewall policies, and host-based controls. Tag traffic, implement strict ACLs, and monitor east-west traffic for anomalies.'},
+      {id:'a3',title:'AI in Cybersecurity: Threat Detection',date:'2024-05-14',read:10,cat:'AI',content:'Machine learning helps detect anomalies at scale. Combine supervised models for known signatures and unsupervised models for anomaly detection. Focus on feature quality and label hygiene.'},
+      {id:'a4',title:'Career Path: Becoming a Security Professional',date:'2023-11-12',read:12,cat:'Career',content:'Build foundations: networking, linux, programming. Earn certifications, contribute to open-source, and document case studies.'},
+      {id:'a5',title:'Cloud Security Fundamentals',date:'2024-02-02',read:9,cat:'Cloud',content:'Secure IAM, encrypt data, limit public exposure. Automate compliance checks and integrate CI/CD scanning.'},
+      {id:'a6',title:'Incident Response Playbook',date:'2023-09-01',read:7,cat:'Response',content:'Prepare detection rules, communication plans, and triage steps. Run tabletop exercises and keep runbooks updated.'},
+      {id:'a7',title:'IoT Security Challenges',date:'2023-08-08',read:9,cat:'IoT',content:'IoT devices often lack updates and strong identity. Use network isolation, secure boot, and monitoring to protect fleets.'},
+      {id:'a8',title:'Future of Quantum Cryptography',date:'2024-01-15',read:11,cat:'Crypto',content:'Quantum-safe algorithms are emerging; start inventorying crypto use and plan migration strategies.'}
+    ];
+
+    const artDiv = document.getElementById('articles');
+    articles.forEach(a=>{
+      const el = document.createElement('div');el.className='article';el.innerHTML=`<div style=\"display:flex;justify-content:space-between;align-items:start\"><div><strong>${a.title}</strong><div class=\"meta\">${a.cat} • ${a.date} • ${a.read} min read</div></div><div><button class=\"nav-btn\" data-article=\"${a.id}\">View Article</button></div></div><div class=\"meta\" style=\"margin-top:8px\">${a.content.slice(0,180)}...<span style=\"color:var(--muted)\"> (click to expand)</span></div><div class=\"full\" id=\"full-${a.id}\" style=\"display:none;margin-top:8px\"></div>`; artDiv.appendChild(el);
+    })
+
+    artDiv.addEventListener('click',e=>{const btn = e.target.closest('[data-article]'); if(!btn) return; const id = btn.getAttribute('data-article'); const target = document.getElementById('full-'+id); const a = articles.find(x=>x.id===id); if(target.style.display==='block'){target.style.display='none'; btn.textContent='View Article';} else {target.innerHTML = `<p style=\"line-height:1.5\">${a.content}</p><p class=\"meta\">(End of article)</p>`; target.style.display='block'; btn.textContent='Hide Article';}})
+
+    // accessibility: keyboard for nav buttons
+    document.querySelectorAll('.nav-btn').forEach(b=>{b.tabIndex=0;b.addEventListener('keydown',e=>{if(e.key==='Enter') b.click()})})
+
+    // small bounce animation keyframes injection
+    const s = document.createElement('style'); s.textContent='@keyframes bounce{0%{transform:translateY(0)}50%{transform:translateY(6px)}100%{transform:translateY(0)}}'; document.head.appendChild(s);
+
+  </script>
+</body>
+</html>
